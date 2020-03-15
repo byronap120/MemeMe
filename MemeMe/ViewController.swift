@@ -12,15 +12,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
-    @IBAction func pickImage(_ sender: Any) {
+    @IBAction func pickImageFromAlbum(_ sender: Any) {
+        openImagePickerController(sourceType: .photoLibrary)
+    }
+    
+    
+    @IBAction func pickImageFromCamera(_ sender: Any) {
+        openImagePickerController(sourceType: .camera)
+    }
+    
+    private func openImagePickerController(sourceType: UIImagePickerController.SourceType){
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
+        pickerController.sourceType = sourceType
         present(pickerController, animated: true, completion: nil)
     }
     

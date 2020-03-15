@@ -25,11 +25,19 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7x-rT-N27">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="n6e-aS-60L">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TOz-r7-pLR"/>
+                                    <barButtonItem title="Camera" id="oLB-he-bVW">
                                         <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="BxR-Y0-kRq"/>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" id="tVU-jW-ZSj"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wph-xv-8vE"/>
+                                    <barButtonItem title="Album" id="n6e-aS-60L">
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="BxR-Y0-kRq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Dbg-nD-2h4"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -44,6 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="oLB-he-bVW" id="oHG-Lg-4xm"/>
                         <outlet property="imagePickerView" destination="l1C-qF-eiu" id="Swd-f4-h4c"/>
                     </connections>
                 </viewController>
