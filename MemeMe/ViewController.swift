@@ -13,11 +13,18 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    
+    private let topTextValue = "TOP"
+    private let bottomTextValue = "BOTTOM"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        initTextField(textField: topTextField, textValue: topTextValue)
+        initTextField(textField: bottomTextField, textValue: bottomTextValue)
     }
     
     @IBAction func pickImageFromAlbum(_ sender: Any) {
@@ -36,8 +43,20 @@ UINavigationControllerDelegate {
         present(pickerController, animated: true, completion: nil)
     }
     
-    private func dismissPicker(){
+    private func dismissPicker() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func initTextField(textField: UITextField, textValue: String) {
+        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth:  -1.0,
+        ]
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.borderStyle = .none
+        textField.text = textValue
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
