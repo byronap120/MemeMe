@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,15 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1C-qF-eiu">
-                                <rect key="frame" x="87" y="379" width="240" height="138"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="h8u-MH-Yqo"/>
-                                    <constraint firstAttribute="height" constant="138" id="sYO-bS-f0r"/>
-                                </constraints>
-                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7x-rT-N27">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TOz-r7-pLR"/>
                                     <barButtonItem title="Camera" id="oLB-he-bVW">
@@ -40,13 +33,24 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Dbg-nD-2h4"/>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-q6-mV9">
+                                <rect key="frame" x="0.0" y="526" width="0.0" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="zXw-SA-4Td"/>
+                                </items>
+                            </toolbar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l1C-qF-eiu">
+                                <rect key="frame" x="0.0" y="130" width="414" height="636"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qyW-q6-mV9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0dc-Bl-psx"/>
+                            <constraint firstItem="qyW-q6-mV9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fus-PN-Guu"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ina-qJ-vlj"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cvq-Tm-KCg"/>
-                            <constraint firstItem="l1C-qF-eiu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="s5I-kE-7zT"/>
-                            <constraint firstItem="l1C-qF-eiu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUB-md-x9j"/>
+                            <constraint firstItem="qyW-q6-mV9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dLh-14-GaC"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xq6-0K-A4K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -58,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="139"/>
+            <point key="canvasLocation" x="129.91071428571428" y="136.23188405797103"/>
         </scene>
     </scenes>
 </document>
