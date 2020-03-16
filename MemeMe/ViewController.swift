@@ -18,6 +18,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     private let topTextValue = "TOP"
     private let bottomTextValue = "BOTTOM"
+    private let emptyTextValue = ""
+    private let textFieldFontStyle = "HelveticaNeue-CondensedBlack"
+    private let textFieldFontSize: CGFloat = 40.0
+    private let textFieldStrokeWidth: CGFloat = -1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +55,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         let memeTextAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth:  -1.0,
+            NSAttributedString.Key.font: UIFont(name: textFieldFontStyle, size: textFieldFontSize)!,
+            NSAttributedString.Key.strokeWidth:  textFieldStrokeWidth,
         ]
         textField.defaultTextAttributes = memeTextAttributes
         textField.borderStyle = .none
@@ -76,7 +80,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if(textField.text == topTextValue || textField.text == bottomTextValue) {
-            textField.text = ""
+            textField.text = emptyTextValue
         }
     }
     
