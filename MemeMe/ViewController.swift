@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -57,6 +57,7 @@ UINavigationControllerDelegate {
         textField.defaultTextAttributes = memeTextAttributes
         textField.borderStyle = .none
         textField.text = textValue
+        textField.delegate = self
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -71,6 +72,16 @@ UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismissPicker()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if(textField.text == topTextValue || textField.text == bottomTextValue) {
+            textField.text = ""
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
     }
     
 }

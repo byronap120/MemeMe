@@ -43,14 +43,14 @@
                                     <barButtonItem title="Item" id="zXw-SA-4Td"/>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aal-0G-ghw">
-                                <rect key="frame" x="179" y="138" width="56" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="aal-0G-ghw">
+                                <rect key="frame" x="193" y="138" width="28" height="18.666666666666657"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-aO-GaK">
-                                <rect key="frame" x="163" y="729" width="88" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-aO-GaK">
+                                <rect key="frame" x="177" y="744.33333333333337" width="60" height="18.666666666666629"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -59,10 +59,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="qyW-q6-mV9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0dc-Bl-psx"/>
-                            <constraint firstItem="aal-0G-ghw" firstAttribute="top" secondItem="qyW-q6-mV9" secondAttribute="bottom" constant="50" id="17e-qK-tMf"/>
+                            <constraint firstItem="aal-0G-ghw" firstAttribute="top" secondItem="qyW-q6-mV9" secondAttribute="bottom" constant="50" id="AIy-Bu-V4m"/>
                             <constraint firstItem="qyW-q6-mV9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Fus-PN-Guu"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ina-qJ-vlj"/>
-                            <constraint firstItem="aal-0G-ghw" firstAttribute="centerX" secondItem="qyW-q6-mV9" secondAttribute="centerX" id="UN2-aF-5bo"/>
+                            <constraint firstItem="aal-0G-ghw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TbH-BB-mOY"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cvq-Tm-KCg"/>
                             <constraint firstItem="qyW-q6-mV9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dLh-14-GaC"/>
                             <constraint firstItem="Z7x-rT-N27" firstAttribute="top" secondItem="vDp-aO-GaK" secondAttribute="bottom" constant="50" id="jCq-Ul-UkL"/>
