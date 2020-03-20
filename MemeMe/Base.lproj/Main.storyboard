@@ -46,7 +46,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aU9-n2-7s6"/>
-                                    <barButtonItem title="cancel" id="zXw-SA-4Td"/>
+                                    <barButtonItem title="cancel" id="zXw-SA-4Td">
+                                        <connections>
+                                            <action selector="cancelMeme:" destination="BYZ-38-t0r" id="gmg-cS-w6s"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="aal-0G-ghw">
@@ -55,7 +59,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-aO-GaK">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-aO-GaK">
                                 <rect key="frame" x="177" y="744.33333333333337" width="60" height="18.666666666666629"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -79,9 +83,11 @@
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="vDp-aO-GaK" id="1jY-JD-gkm"/>
+                        <outlet property="bottomToolbar" destination="Z7x-rT-N27" id="8fe-Kb-ybp"/>
                         <outlet property="cameraButton" destination="oLB-he-bVW" id="oHG-Lg-4xm"/>
                         <outlet property="imagePickerView" destination="l1C-qF-eiu" id="Swd-f4-h4c"/>
                         <outlet property="topTextField" destination="aal-0G-ghw" id="LUG-aK-xtP"/>
+                        <outlet property="topToolbar" destination="qyW-q6-mV9" id="BMC-Uc-heW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

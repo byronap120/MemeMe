@@ -22,6 +22,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
+    @IBOutlet weak var topToolbar: UIToolbar!
     
     private let topTextValue = "TOP"
     private let bottomTextValue = "BOTTOM"
@@ -29,12 +31,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     private let textFieldFontStyle = "HelveticaNeue-CondensedBlack"
     private let textFieldFontSize: CGFloat = 40.0
     private let textFieldStrokeWidth: CGFloat = -1.0
+    private var isBottomTextFieldEditing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        initTextField(textField: topTextField, textValue: topTextValue)
-        initTextField(textField: bottomTextField, textValue: bottomTextValue)
+        initMemeTextFields()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,23 +68,28 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         present(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func cancelMeme(_ sender: Any) {
+        imagePickerView.image = nil
+        initMemeTextFields()
+    }
+    
     private func save(memedImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     
     private func generateMemedImage() -> UIImage {
-        
-        // TODO: Hide toolbar and navbar
-        
-        // Render view to an image
+        setToolbarVisibility(visible: true)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        
-        // TODO: Show toolbar and navbar
-        
+        setToolbarVisibility(visible: false)
         return memedImage
+    }
+    
+    private func setToolbarVisibility(visible: Bool){
+        bottomToolbar.isHidden = visible
+        topToolbar.isHidden = visible
     }
     
     private func openImagePickerController(sourceType: UIImagePickerController.SourceType){
@@ -94,6 +101,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     private func dismissPicker() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func initMemeTextFields(){
+        initTextField(textField: topTextField, textValue: topTextValue)
+        initTextField(textField: bottomTextField, textValue: bottomTextValue)
     }
     
     private func initTextField(textField: UITextField, textValue: String) {
@@ -120,11 +132,15 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     @objc private func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if isBottomTextFieldEditing {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     @objc private func keyboardWillHide(_ notification:Notification) {
-        view.frame.origin.y += getKeyboardHeight(notification)
+        if isBottomTextFieldEditing {
+            view.frame.origin.y += getKeyboardHeight(notification)
+        }
     }
     
     private func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -134,12 +150,10 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFit
             imagePickerView.image = pickedImage
         }
-        
         dismissPicker()
     }
     
@@ -151,6 +165,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if(textField.text == topTextValue || textField.text == bottomTextValue) {
             textField.text = emptyTextValue
         }
+        isBottomTextFieldEditing = textField.tag == 1 ? true : false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
