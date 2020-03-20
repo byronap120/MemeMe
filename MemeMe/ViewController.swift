@@ -24,6 +24,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     private let topTextValue = "TOP"
     private let bottomTextValue = "BOTTOM"
@@ -35,8 +36,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        initMemeTextFields()
+        initMemeViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +70,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBAction func cancelMeme(_ sender: Any) {
         imagePickerView.image = nil
-        initMemeTextFields()
+        initMemeViews()
     }
     
     private func save(memedImage: UIImage) {
@@ -103,9 +103,11 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    private func initMemeTextFields(){
+    private func initMemeViews(){
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         initTextField(textField: topTextField, textValue: topTextValue)
         initTextField(textField: bottomTextField, textValue: bottomTextValue)
+        shareButton.isEnabled = false
     }
     
     private func initTextField(textField: UITextField, textValue: String) {
@@ -153,6 +155,7 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFit
             imagePickerView.image = pickedImage
+            shareButton.isEnabled = true
         }
         dismissPicker()
     }
