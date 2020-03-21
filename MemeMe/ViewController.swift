@@ -68,6 +68,9 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     private func save(memedImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     private func generateMemedImage() -> UIImage {
