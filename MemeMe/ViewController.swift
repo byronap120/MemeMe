@@ -34,11 +34,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        hideNavigationBars(hide: true)
         subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        hideNavigationBars(hide: false)
         unsubscribeFromKeyboardNotifications()
     }
     
@@ -64,6 +66,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBAction func cancelMeme(_ sender: Any) {
         imagePickerView.image = nil
         initMemeViews()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func hideNavigationBars(hide: Bool){
+        self.navigationController?.setNavigationBarHidden(hide, animated: false)
+        self.tabBarController?.tabBar.isHidden = hide
     }
     
     private func save(memedImage: UIImage) {
@@ -171,4 +179,5 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
 }
