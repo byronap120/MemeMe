@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="-1106" y="400"/>
         </scene>
-        <!--Sent Meme Collection View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="Oa1-NC-Q21">
             <objects>
                 <collectionViewController id="O5h-ek-cCg" customClass="SentMemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -193,7 +193,9 @@
                             <outlet property="delegate" destination="O5h-ek-cCg" id="HiZ-CF-SpL"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="t87-30-ggo"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="Utf-S6-KlO">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="lDl-DA-vjH"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="memeCollectionView" destination="WTX-VB-Oez" id="m6X-mr-Gqb"/>
                     </connections>
