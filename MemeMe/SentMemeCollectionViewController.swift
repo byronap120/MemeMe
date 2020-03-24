@@ -13,7 +13,8 @@ class SentMemeCollectionViewController : UICollectionViewController {
     @IBOutlet var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    private let numberOfCells: CGFloat = 3.0
+    private let numberOfCellsPortrait: CGFloat = 3.0
+    private let numberOfCellsLandscape: CGFloat = 6.0
     private let minimunSpace: CGFloat = 3.0
     private let dimensionSpace: CGFloat = 6.0
     private let memeViewCellIdentifier: String = "MemeViewCell"
@@ -28,15 +29,7 @@ class SentMemeCollectionViewController : UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         memeCollectionView.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let dimension = (view.frame.size.width - dimensionSpace) / numberOfCells
-        flowLayout.minimumInteritemSpacing = minimunSpace
-        flowLayout.minimumLineSpacing = minimunSpace
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        updateFlowLayoutDimensions(size: view.frame.size, numberOfCells: numberOfCellsPortrait)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,5 +52,19 @@ class SentMemeCollectionViewController : UICollectionViewController {
         
         detailMeme.meme = self.memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(detailMeme, animated: true)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        let numberOfCells: CGFloat =
+            UIDevice.current.orientation.isLandscape == true ? numberOfCellsLandscape : numberOfCellsPortrait
+        updateFlowLayoutDimensions(size: size, numberOfCells: numberOfCells)
+    }
+    
+    private func updateFlowLayoutDimensions(size: CGSize, numberOfCells: CGFloat){
+        let dimension = (size.width - dimensionSpace) / numberOfCells
+        flowLayout?.minimumInteritemSpacing = minimunSpace
+        flowLayout?.minimumLineSpacing = minimunSpace
+        flowLayout?.itemSize = CGSize(width: dimension, height: dimension)
     }
 }

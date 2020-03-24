@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Byron Ajin on 3/15/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -124,6 +124,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
         textField.defaultTextAttributes = memeTextAttributes
         textField.borderStyle = .none
         textField.text = textValue
+        textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.textAlignment = .center
         textField.delegate = self
     }
     
@@ -139,13 +141,13 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     @objc private func keyboardWillShow(_ notification:Notification) {
         if isBottomTextFieldEditing {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y = getKeyboardHeight(notification) * (-1)
         }
     }
     
     @objc private func keyboardWillHide(_ notification:Notification) {
         if isBottomTextFieldEditing {
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
         }
     }
     
