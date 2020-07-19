@@ -5,6 +5,7 @@ IOS app that forms a meme based on an image taken from the camera or gallery. Th
 ## Tecnical Overview
 
 - Delegates and use of table views
+- Adding text to image using input texts 
 - Collection View
 - Access camera and gallery
 
